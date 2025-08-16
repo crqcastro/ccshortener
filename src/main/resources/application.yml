@@ -1,0 +1,60 @@
+info:
+  app:
+    name: @project.name@
+    artifactId: @project.artifactId@
+    description: @project.description@
+    version: @project.version@
+    encoding: @project.build.sourceEncoding@
+    java:
+      version: @java.version@
+
+server:
+  port: 80
+  servlet:
+    context-path: /@project.artifactId@
+spring:
+  application:
+    name: @project.name@
+  datasource:
+    url: ${DATABASE-PGSQL-URL}
+    username: ${DATABASE-PGSQL-USERNAME}
+    password: ${DATABASE-PGSQL-PASSWORD}
+  hikari:
+    minimumIdle: 1
+    idleTimeout: 10000
+    connectionTimeout: 30000
+    maximumPoolSize: 20
+    maxLifetime: 30000
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: ${DATABASE-DIALECT}
+  flyway:
+    url: ${FLYWAY_URL}
+    user: ${FLYWAY_USERNAME}
+    password: ${FLYWAY_PASSWORD}
+    schemas: ${FLYWAY_SCHEMAS}
+    locations: classpath:db/migration
+
+# SPRING DOC - BEGIN
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    configUrl: /ccshortener/v3/api-docs/swagger-config
+    disable-swagger-default-url: true
+    url: /ccshortener/v3/api-docs
+    enabled: true
+    path: swagger-ui.html
+    operationsSorter: alpha
+    tagsSorter: alpha
+    defaultModelsExpandDepth: -1
+# SPRING DOC - END
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+      base-path: /actuator
