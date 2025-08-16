@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ShortenerController implements IShorternerController {
     private final IShortenerService shortenerService;
+
     @Override
     public ResponseEntity<ShortenedURLResponseDTO> shorten(ShortenedURLRequestDTO requestDTO) {
-        return null;
+        return ResponseEntity.ok(shortenerService.shorten(requestDTO));
     }
 
     @Override

@@ -1,3 +1,8 @@
+shortener:
+  code:
+    length: 7
+    base-url: https://cc.dev.br/
+    free-days: 15
 info:
   app:
     name: @project.name@
@@ -9,7 +14,7 @@ info:
       version: @java.version@
 
 server:
-  port: 80
+  port: 8080
   servlet:
     context-path: /@project.artifactId@
 spring:
