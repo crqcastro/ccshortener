@@ -24,7 +24,7 @@ public interface ShortenedMapper {
     @Mapping(source = "code", target = "shortUrl")
     @Mapping(source = "createdAt", target = "createdAt")
     @Mapping(source = "expiresAt", target = "expiresAt")
-    @Mapping(target = "qrCode", source = "code", qualifiedByName = "qrcodeGenerator")
+    @Mapping(target = "qrCodeImage", source = "code", qualifiedByName = "qrcodeGenerator")
     ShortenedURLResponseDTO toResponseDTO(ShortenedUrlEntity entity);
 
     @Named("qrcodeGenerator")

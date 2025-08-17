@@ -1,4 +1,4 @@
-shortener:
+ccshortener:
   code:
     length: 7
     base-url: https://cc.dev.br/
