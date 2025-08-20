@@ -37,7 +37,6 @@ public interface IShorternerController {
         @ApiResponse(responseCode = "503", description = "Serviço não está disponível no momento.", content = @Content)
     })
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    @Transactional
     ResponseEntity<ShortenedURLResponseDTO> shorten(@RequestBody @Valid ShortenedURLRequestDTO requestDTO);
 
     @GetMapping

@@ -4,6 +4,7 @@ import br.com.cesarcastro.apis.ccshortener.controller.api.IShorternerController;
 import br.com.cesarcastro.apis.ccshortener.domain.model.dto.request.ShortenedURLRequestDTO;
 import br.com.cesarcastro.apis.ccshortener.domain.model.dto.response.ShortenedURLResponseDTO;
 import br.com.cesarcastro.apis.ccshortener.domain.service.IShortenerService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
