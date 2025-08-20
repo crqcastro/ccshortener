@@ -17,7 +17,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "url_mapping")
+@Table(name = "url_mapping", schema = "ccshortener")
 public class ShortenedUrlEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -40,4 +40,7 @@ public class ShortenedUrlEntity {
 
     @Column(nullable = false)
     private long clicks = 0;
+
+    @Column(name = "created_ip")
+    private String createdIp;
 }

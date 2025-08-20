@@ -1,6 +1,7 @@
 package br.com.cesarcastro.apis.ccshortener.domain.service.impl;
 
 import br.com.cesarcastro.apis.ccshortener.domain.entities.ShortenedUrlEntity;
+import br.com.cesarcastro.apis.ccshortener.domain.exceptions.ResourceNotFoundException;
 import br.com.cesarcastro.apis.ccshortener.domain.mapper.ShortenedMapper;
 import br.com.cesarcastro.apis.ccshortener.domain.model.dto.request.ShortenedURLRequestDTO;
 import br.com.cesarcastro.apis.ccshortener.domain.model.dto.response.ShortenedURLResponseDTO;
@@ -35,17 +36,31 @@ public class ShortenerService implements IShortenerService {
 
     @Override
     @Transactional
-    public ShortenedURLResponseDTO shorten(ShortenedURLRequestDTO requestDTO) {
+    public ShortenedURLResponseDTO shorten(ShortenedURLRequestDTO requestDTO, String ip) {
         getPreExisting(requestDTO.getOriginalUrl()).ifPresent(mapper::toResponseDTO);
 
         ShortenedUrlEntity entity = mapper.convertToEntity(requestDTO);
         entity.setCode(shortenUrl());
         entity.setExpiresAt(LocalDateTime.now().plusDays(freeDays));
         entity.setActive(TRUE);
+        entity.setCreatedIp(ip);
 
         shortenedUrlRepository.save(entity);
         return mapper.toResponseDTO(entity);
     }
+
+    @Override
+    public String resolveTargetUrl(String code) {
+        var target = shortenedUrlRepository.findByCodeAndActive(baseUrl + code, TRUE);
+        if (target.isPresent()) {
+            var entity = target.get();
+            entity.setClicks(entity.getClicks() + 1);
+            shortenedUrlRepository.save(entity);
+            return entity.getTargetUrl();
+        }
+        throw new ResourceNotFoundException("Invalid code or URL not found");
+    }
+
 
     private Optional<ShortenedUrlEntity> getPreExisting(String originalUrl) {
         return shortenedUrlRepository.findByTargetUrl(originalUrl);

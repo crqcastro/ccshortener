@@ -11,4 +11,6 @@ public interface IShortenedUrlRepository extends JpaRepository<ShortenedUrlEntit
     Optional<ShortenedUrlEntity> findByTargetUrl(String originalUrl);
 
     boolean existsByCode(String code);
+
+    Optional<ShortenedUrlEntity> findByCodeAndActive(String code, Boolean aTrue);
 }

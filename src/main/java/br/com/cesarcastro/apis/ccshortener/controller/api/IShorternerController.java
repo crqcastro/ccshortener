@@ -8,14 +8,19 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.io.IOException;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -36,8 +41,11 @@ public interface IShorternerController {
         @ApiResponse(responseCode = "503", description = "Serviço não está disponível no momento.", content = @Content)
     })
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    ResponseEntity<ShortenedURLResponseDTO> shorten(@RequestBody @Valid ShortenedURLRequestDTO requestDTO);
+    ResponseEntity<ShortenedURLResponseDTO> shorten(@RequestBody @Valid ShortenedURLRequestDTO requestDTO,
+                                                    HttpServletRequest req);
 
-    @GetMapping
-    ResponseEntity<Void> healthCheck();
+    @GetMapping("/{code}")
+    void resolveTarget(@PathVariable(value = "code") String code, HttpServletResponse response) throws IOException;
+
+
 }

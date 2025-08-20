@@ -4,5 +4,7 @@ import br.com.cesarcastro.apis.ccshortener.domain.model.dto.request.ShortenedURL
 import br.com.cesarcastro.apis.ccshortener.domain.model.dto.response.ShortenedURLResponseDTO;
 
 public interface IShortenerService {
-    ShortenedURLResponseDTO shorten(ShortenedURLRequestDTO requestDTO);
+    ShortenedURLResponseDTO shorten(ShortenedURLRequestDTO requestDTO, String ip);
+
+    String resolveTargetUrl(String code);
 }
