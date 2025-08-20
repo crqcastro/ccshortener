@@ -25,7 +25,6 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @Validated
 @RequestMapping("/v1/shortener")
 public interface IShorternerController {
-    //    @PreAuthorize("hasRole('ROLE_grupomateus.gmsuite_fin_pix_gerenciador.acao-16')")
     @Operation(summary = "Endpoint para importar um novo certificado digital.")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Certificado importado com sucesso.",
