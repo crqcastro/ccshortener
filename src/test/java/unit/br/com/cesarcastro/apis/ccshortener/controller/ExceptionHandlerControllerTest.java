@@ -1,6 +1,7 @@
-package br.com.cesarcastro.apis.ccshortener.controller;
+package unit.br.com.cesarcastro.apis.ccshortener.controller;
 
 
+import br.com.cesarcastro.apis.ccshortener.controller.ExceptionHandlerController;
 import br.com.cesarcastro.apis.ccshortener.domain.exceptions.BusinessException;
 import br.com.cesarcastro.apis.ccshortener.domain.exceptions.NotAuthorizedException;
 import br.com.cesarcastro.apis.ccshortener.domain.exceptions.ResourceNotFoundException;
@@ -13,6 +14,7 @@ import jakarta.validation.Path;
 import jakarta.validation.UnexpectedTypeException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -64,6 +66,7 @@ class ExceptionHandlerControllerTest {
     /* ############################################ 4XX CLIENT EXCEPTION ############################################ */
 
     @Test
+    @DisplayName("Must handle BusinessException and return BAD_REQUEST")
     void testHandleBusinessException() {
         BusinessException exception = new BusinessException(BAD_REQUEST, "Erro de negócio");
         ResponseEntity<ErrorDTO> expected = ResponseEntity.status(BAD_REQUEST)
@@ -75,6 +78,7 @@ class ExceptionHandlerControllerTest {
     }
 
     @Test
+    @DisplayName("Must handle ResourceNotFoundException and return NOT_FOUND")
     void testHandleRecursoNaoEncontradoPixException() {
         ResourceNotFoundException exception = new ResourceNotFoundException("Resource not found");
         ResponseEntity<ErrorDTO> expected = ResponseEntity.status(NOT_FOUND).body(ErrorDTO.builder().build());
@@ -84,6 +88,7 @@ class ExceptionHandlerControllerTest {
     }
 
     @Test
+    @DisplayName("Must handle HttpRequestMethodNotSupportedException and return METHOD_NOT_ALLOWED")
     void testHandleHttpRequestMethodNotSupportedException() {
         HttpRequestMethodNotSupportedException exception = new HttpRequestMethodNotSupportedException("Método não permitido");
         ResponseEntity<ErrorDTO> expected = ResponseEntity.status(METHOD_NOT_ALLOWED).body(ErrorDTO.builder().build());
@@ -93,6 +98,7 @@ class ExceptionHandlerControllerTest {
     }
 
     @Test
+    @DisplayName("Must handle UnexpectedTypeException and return UNPROCESSABLE_ENTITY")
     void testHandleUnexpectedTypeException() {
         UnexpectedTypeException exception = new UnexpectedTypeException("Tipo inesperado");
         ResponseEntity<ErrorDTO> expected = ResponseEntity.status(UNPROCESSABLE_ENTITY).body(ErrorDTO.builder().build());
@@ -102,6 +108,7 @@ class ExceptionHandlerControllerTest {
     }
 
     @Test
+    @DisplayName("Must handle MethodArgumentNotValidException and return BAD_REQUEST")
     void testTratarErroViolacaoConstraint() {
         Set<ConstraintViolation<?>> violations = new HashSet<>();
         ConstraintViolation<Object> violation = mock(ConstraintViolation.class);
@@ -122,6 +129,7 @@ class ExceptionHandlerControllerTest {
     }
 
     @Test
+    @DisplayName("Must handle IllegalArgumentException and return BAD_REQUEST")
     void testHandleIllegalArgumentException() {
         IllegalArgumentException exception = new IllegalArgumentException("Argumento inválido");
         ResponseEntity<ErrorDTO> expected = ResponseEntity.status(BAD_REQUEST).body(ErrorDTO.builder().build());
@@ -131,6 +139,7 @@ class ExceptionHandlerControllerTest {
     }
 
     @Test
+    @DisplayName("Must handle ConstraintViolationException and return UNPROCESSABLE_ENTITY")
     void testMethodArgumentNotValidExceptionComRecord() throws Exception {
         FieldError error1 = new FieldError("obj", "originalUrl", "URL must start with http:// or https://");
         List<FieldError> fieldErrors = Arrays.asList(error1);
@@ -157,6 +166,7 @@ class ExceptionHandlerControllerTest {
 
 
     @Test
+    @DisplayName("Must handle NotAuthorizedException and return UNAUTHORIZED")
     void testNotAuthorizedException() {
         NotAuthorizedException exception = new NotAuthorizedException("Não autorizado");
         ResponseEntity<ErrorDTO> expected = ResponseEntity.status(UNAUTHORIZED).body(ErrorDTO.builder().build());
@@ -168,6 +178,7 @@ class ExceptionHandlerControllerTest {
     /* ############################################ 5XX SERVER EXCEPTION ############################################ */
 
     @Test
+    @DisplayName("Must handle Exception and return INTERNAL_SERVER_ERROR")
     void testHandleException() {
 
         Exception exception = new Exception("Erro interno do servidor. Entre em contato com o suporte.");

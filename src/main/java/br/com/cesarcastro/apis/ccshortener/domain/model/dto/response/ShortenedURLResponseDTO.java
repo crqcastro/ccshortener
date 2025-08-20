@@ -20,7 +20,7 @@ import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 @Data
 public class ShortenedURLResponseDTO {
     @Schema(description = "Request ID.", requiredMode = REQUIRED)
-    private String id;
+    private Long id;
     @Schema(description = "Original URL.", requiredMode = REQUIRED)
     private String originalUrl;
     @Schema(description = "Shortened URL.", requiredMode = REQUIRED)
