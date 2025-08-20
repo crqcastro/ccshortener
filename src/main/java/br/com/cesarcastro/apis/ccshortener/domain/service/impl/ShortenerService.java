@@ -58,7 +58,9 @@ public class ShortenerService implements IShortenerService {
     private String generateUniqueCode() {
         for (int attempts = 0; attempts < 20; attempts++) {
             var c = Base62.random(length);
-            if (!shortenedUrlRepository.existsByCode(c)) return c;
+            if (!shortenedUrlRepository.existsByCode(c)) {
+                return c;
+            }
         }
         throw new IllegalStateException("Falha ao gerar código único");
     }

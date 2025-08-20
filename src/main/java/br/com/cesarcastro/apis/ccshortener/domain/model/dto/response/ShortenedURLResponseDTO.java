@@ -19,16 +19,16 @@ import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 @Builder
 @Data
 public class ShortenedURLResponseDTO {
-        @Schema(description = "Request ID.", requiredMode = REQUIRED)
-        private String id;
-        @Schema(description = "Original URL.", requiredMode = REQUIRED)
-        private String originalUrl;
-        @Schema(description = "Shortened URL.", requiredMode = REQUIRED)
-        private String shortUrl;
-        @Schema(description = "Creation date.", requiredMode = REQUIRED)
-        private LocalDateTime createdAt;
-        @Schema(description = "Expiration date.", requiredMode = REQUIRED)
-        private LocalDateTime expiresAt;
-        @Schema(description = "QRCode to shortened link.", requiredMode = REQUIRED)
-        private byte[] qrCodeImage;
+    @Schema(description = "Request ID.", requiredMode = REQUIRED)
+    private String id;
+    @Schema(description = "Original URL.", requiredMode = REQUIRED)
+    private String originalUrl;
+    @Schema(description = "Shortened URL.", requiredMode = REQUIRED)
+    private String shortUrl;
+    @Schema(description = "Creation date.", requiredMode = REQUIRED)
+    private LocalDateTime createdAt;
+    @Schema(description = "Expiration date.", requiredMode = REQUIRED)
+    private LocalDateTime expiresAt;
+    @Schema(description = "QRCode to shortened link.", requiredMode = REQUIRED)
+    private byte[] qrCodeImage;
 }

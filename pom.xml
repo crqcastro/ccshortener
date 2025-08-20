@@ -45,8 +45,8 @@
 		<!-- LOMBOK -->
 		<lombok.version>1.18.36</lombok.version>
 
-		<!-- MAPSTRUCT -->
-		<mapstruct.version>1.6.0.Beta1</mapstruct.version>
+		<!-- CHECKSTYLE -->
+		<checkstyle-maven-plugin.version>3.2.0</checkstyle-maven-plugin.version>
 
 	</properties>
 	<dependencies>
@@ -121,7 +121,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -152,7 +151,29 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${checkstyle-maven-plugin.version}</version>
+				<configuration>
+					<consoleOutput>true</consoleOutput>
+					<includeTestSourceDirectory>true</includeTestSourceDirectory>
+					<failOnViolation>true</failOnViolation>
+					<failsOnError>true</failsOnError>
+					<configLocation>config/checkstyle/checkstyle.xml</configLocation>
+					<suppressionsLocation>config/checkstyle/suppressions.xml</suppressionsLocation>
+					<suppressionsFileExpression>suppressions.xml</suppressionsFileExpression>
+				</configuration>
+				<executions>
+					<execution>
+						<id>validate</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>

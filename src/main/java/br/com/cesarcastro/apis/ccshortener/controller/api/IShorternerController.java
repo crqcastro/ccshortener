@@ -25,17 +25,17 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @Validated
 @RequestMapping("/v1/shortener")
 public interface IShorternerController {
-//    @PreAuthorize("hasRole('ROLE_grupomateus.gmsuite_fin_pix_gerenciador.acao-16')")
+    //    @PreAuthorize("hasRole('ROLE_grupomateus.gmsuite_fin_pix_gerenciador.acao-16')")
     @Operation(summary = "Endpoint para importar um novo certificado digital.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Certificado importado com sucesso.",
-                    content = @Content(mediaType = APPLICATION_JSON_VALUE,
-                            schema = @Schema(implementation = ShortenedURLResponseDTO.class))
+        @ApiResponse(responseCode = "201", description = "Certificado importado com sucesso.",
+                content = @Content(mediaType = APPLICATION_JSON_VALUE,
+                        schema = @Schema(implementation = ShortenedURLResponseDTO.class))
             ),
-            @ApiResponse(responseCode = "400", description = "Requisição inválida.", content = @Content),
-            @ApiResponse(responseCode = "403", description = "Acesso negado.", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Erro inesperado no servidor.", content = @Content),
-            @ApiResponse(responseCode = "503", description = "Serviço não está disponível no momento.", content = @Content)
+        @ApiResponse(responseCode = "400", description = "Requisição inválida.", content = @Content),
+        @ApiResponse(responseCode = "403", description = "Acesso negado.", content = @Content),
+        @ApiResponse(responseCode = "500", description = "Erro inesperado no servidor.", content = @Content),
+        @ApiResponse(responseCode = "503", description = "Serviço não está disponível no momento.", content = @Content)
     })
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     @Transactional

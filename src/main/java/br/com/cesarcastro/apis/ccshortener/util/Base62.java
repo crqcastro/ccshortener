@@ -8,7 +8,9 @@ public final class Base62 {
 
     public static String random(int len) {
         var sb = new StringBuilder(len);
-        for (int i = 0; i < len; i++) sb.append(ALPHABET[RNG.nextInt(ALPHABET.length)]);
+        for (int i = 0; i < len; i++) {
+            sb.append(ALPHABET[RNG.nextInt(ALPHABET.length)]);
+        }
         return sb.toString();
     }
 }

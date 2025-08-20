@@ -16,6 +16,6 @@ import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 @Data
 public class ShortenedURLRequestDTO {
     @Schema(description = "Original URL to be shortened.", requiredMode = REQUIRED)
-    @Pattern(regexp="https?://.+", message="URL deve iniciar com http:// ou https://")
+    @Pattern(regexp = "https?://.+", message = "URL must start with http:// or https://")
     private String originalUrl;
 }

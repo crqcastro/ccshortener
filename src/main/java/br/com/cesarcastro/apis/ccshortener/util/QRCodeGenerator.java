@@ -36,7 +36,7 @@ public class QRCodeGenerator {
                 MatrixToImageWriter.writeToStream(matrix, "PNG", baos);
                 return baos.toByteArray();
             }
-        }catch (WriterException | IOException e) {
+        } catch (WriterException | IOException e) {
             log.error("Erro ao gerar o QR Code: " + e.getMessage(), e);
             return "".getBytes(StandardCharsets.UTF_8);
         }
