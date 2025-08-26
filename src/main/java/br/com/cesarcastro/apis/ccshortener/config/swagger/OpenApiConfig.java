@@ -20,18 +20,29 @@ import java.util.List;
 public class OpenApiConfig {
     private final Environment env;
     private final Integer port;
+    private final String hostUrl;
+    private final String appName;
+    private final String description;
+    private final String title;
 
     @Autowired
-    public OpenApiConfig(Environment env, @Value("${server.port}") Integer port) {
+    public OpenApiConfig(Environment env,
+                         @Value("${server.port}") Integer port,
+                         @Value("${info.app.host.url}") String hostUrl,
+                         @Value("${info.app.name}") String appName,
+                         @Value("${info.app.description}") String description,
+                         @Value("${info.app.title}") String title) {
         this.env = env;
         this.port = port;
+        this.hostUrl = hostUrl;
+        this.appName = appName;
+        this.description = description;
+        this.title = title;
     }
 
     @Bean
     public OpenAPI getConfigOpenApi(@Value("${info.app.version}") String appVersion) {
-        final var appName = "ccshortener";
         final var envLocal = Arrays.asList(env.getActiveProfiles()).contains("local");
-        final var envProd = Arrays.asList(env.getActiveProfiles()).contains("prod");
         final var apiVersion = "v" + appVersion.split("\\.")[0];
 
         List<Server> servers = new ArrayList<>();
@@ -44,27 +55,18 @@ public class OpenApiConfig {
                     .url(url);
 
             servers.add(localServer);
-        } else if (envProd) {
-            var url = "https://apis.cc.dev.br" + "/" + appName + "/" + apiVersion;
-            log.info("Local server URL: {}", url);
-            Server productionServer = new Server()
-                    .description("Production server (uses live data)")
-                    .url(url);
-
-            servers.add(productionServer);
         } else {
-            var url = "https://apis-dev.cc.dev.br" + "/" + appName + "/" + apiVersion;
-            log.info("Local server URL: {}", url);
+            var url = hostUrl + "/" + appName + "/" + apiVersion;
             Server developmentServer = new Server()
-                    .description("Development Server (uses mock data)")
+                    .description("Production Server")
                     .url(url);
 
             servers.add(developmentServer);
         }
 
         Info info = new Info()
-                .title("URL SHORTENER API")
-                .description("URL shortening service API")
+                .title(title)
+                .description(description)
                 .version(appVersion);
 
         return new OpenAPI().info(info).servers(servers);
