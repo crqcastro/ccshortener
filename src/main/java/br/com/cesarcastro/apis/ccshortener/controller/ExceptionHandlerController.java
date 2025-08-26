@@ -17,6 +17,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -45,9 +46,9 @@ public class ExceptionHandlerController {
         return ResponseEntity.status(e.getHttpStatus()).contentType(APPLICATION_JSON).body(err);
     }
 
-    @ExceptionHandler({ResourceNotFoundException.class})
+    @ExceptionHandler({ResourceNotFoundException.class, NoResourceFoundException.class})
     public ResponseEntity<ErrorDTO> handleRecursoNaoEncontradoPixException(
-            ResourceNotFoundException e, HttpServletRequest request) {
+            Exception e, HttpServletRequest request) {
         log.error("Recurso nao encontrado.", e);
         ErrorDTO err = gerarError(request, NOT_FOUND, e.getMessage());
         return ResponseEntity.status(NOT_FOUND).contentType(APPLICATION_JSON).body(err);
