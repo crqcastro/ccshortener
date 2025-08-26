@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.net.URI;
 
 @RequiredArgsConstructor
 @RestController
@@ -20,7 +21,8 @@ public class ShortenerController implements IShorternerController {
     @Override
     public ResponseEntity<ShortenedURLResponseDTO> shorten(ShortenedURLRequestDTO requestDTO,
                                                            HttpServletRequest req) {
-        return ResponseEntity.ok(shortenerService.shorten(requestDTO, req.getRemoteAddr()));
+        var shorten = shortenerService.shorten(requestDTO, req.getRemoteAddr());
+        return ResponseEntity.created(URI.create(shorten.getShortUrl())).body(shorten);
     }
 
     @Override
