@@ -1,7 +1,6 @@
 package br.com.cesarcastro.apis.ccshortener.controller;
 
 
-import br.com.cesarcastro.apis.ccshortener.controller.ExceptionHandlerController;
 import br.com.cesarcastro.apis.ccshortener.domain.exceptions.BusinessException;
 import br.com.cesarcastro.apis.ccshortener.domain.exceptions.NotAuthorizedException;
 import br.com.cesarcastro.apis.ccshortener.domain.exceptions.ResourceNotFoundException;
