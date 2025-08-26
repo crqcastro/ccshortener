@@ -1,0 +1,19 @@
+ ██████╗ ██████╗███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗███████╗███╗   ██╗███████╗██████╗
+██╔════╝██╔════╝██╔════╝██║  ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝████╗  ██║██╔════╝██╔══██╗
+██║     ██║     ███████╗███████║██║   ██║██████╔╝   ██║   █████╗  ██╔██╗ ██║█████╗  ██████╔╝
+██║     ██║     ╚════██║██╔══██║██║   ██║██╔══██╗   ██║   ██╔══╝  ██║╚██╗██║██╔══╝  ██╔══██╗
+╚██████╗╚██████╗███████║██║  ██║╚██████╔╝██║  ██║   ██║   ███████╗██║ ╚████║███████╗██║  ██║
+ ╚═════╝ ╚═════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝
+ =============================================================================
+ ${AnsiColor.DEFAULT}
+ ${AnsiColor.BRIGHT_GREEN}Application:         ${AnsiColor.WHITE}${info.app.name}
+ ${AnsiColor.BRIGHT_GREEN}Version:             ${AnsiColor.WHITE}${info.app.version}
+ ${AnsiColor.BRIGHT_GREEN}Description:         ${AnsiColor.WHITE}${info.app.description}
+ ${AnsiColor.BRIGHT_GREEN}Active Profile:      ${AnsiColor.WHITE}${spring.profiles.active}
+ ${AnsiColor.BRIGHT_GREEN}Server Port:         ${AnsiColor.WHITE}${server.port}
+ ${AnsiColor.BRIGHT_GREEN}Spring Boot:         ${AnsiColor.WHITE}${spring-boot.version}
+ ${AnsiColor.BRIGHT_GREEN}Java:                ${AnsiColor.WHITE}${info.app.java.version}
+ ${AnsiColor.BRIGHT_YELLOW}Encoding:            ${AnsiColor.WHITE}${file.encoding}
+ ${AnsiColor.BRIGHT_YELLOW}Time Zone:           ${AnsiColor.WHITE}${system.timezone}
+ ${AnsiColor.DEFAULT}
+ =============================================================================

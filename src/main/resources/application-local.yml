@@ -9,6 +9,8 @@ management:
         include: health,info,metrics,beans,httptrace,loggers
       base-path: /actuator
 
+server:
+  port: 8081
 
 logging:
   level:
