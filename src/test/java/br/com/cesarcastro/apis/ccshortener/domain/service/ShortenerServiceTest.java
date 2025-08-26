@@ -1,4 +1,4 @@
-package unit.br.com.cesarcastro.apis.ccshortener.domain.service;
+package br.com.cesarcastro.apis.ccshortener.domain.service;
 
 import br.com.cesarcastro.apis.ccshortener.domain.entities.ShortenedUrlEntity;
 import br.com.cesarcastro.apis.ccshortener.domain.mapper.ShortenedMapper;
@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import unit.br.com.cesarcastro.apis.ccshortener.test.fixtures.ShortenedURLRequestDTOFixture;
-import unit.br.com.cesarcastro.apis.ccshortener.test.fixtures.ShortenedURLResponseDTOFixture;
-import unit.br.com.cesarcastro.apis.ccshortener.test.fixtures.ShortenedUrlEntityFixture;
+import br.com.cesarcastro.apis.ccshortener.test.fixtures.ShortenedURLRequestDTOFixture;
+import br.com.cesarcastro.apis.ccshortener.test.fixtures.ShortenedURLResponseDTOFixture;
+import br.com.cesarcastro.apis.ccshortener.test.fixtures.ShortenedUrlEntityFixture;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;

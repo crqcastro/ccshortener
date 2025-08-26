@@ -1,4 +1,4 @@
-package unit.br.com.cesarcastro.apis.ccshortener.test.fixtures;
+package br.com.cesarcastro.apis.ccshortener.test.fixtures;
 
 import br.com.cesarcastro.apis.ccshortener.domain.model.dto.request.ShortenedURLRequestDTO;
 

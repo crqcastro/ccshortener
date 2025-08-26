@@ -1,4 +1,4 @@
-package unit.br.com.cesarcastro.apis.ccshortener.controller;
+package br.com.cesarcastro.apis.ccshortener.controller;
 
 
 import br.com.cesarcastro.apis.ccshortener.controller.ExceptionHandlerController;

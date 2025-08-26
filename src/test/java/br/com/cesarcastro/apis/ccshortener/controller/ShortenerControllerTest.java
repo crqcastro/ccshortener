@@ -1,4 +1,4 @@
-package unit.br.com.cesarcastro.apis.ccshortener.controller;
+package br.com.cesarcastro.apis.ccshortener.controller;
 
 import br.com.cesarcastro.apis.ccshortener.controller.rest.ShortenerController;
 import br.com.cesarcastro.apis.ccshortener.domain.model.dto.request.ShortenedURLRequestDTO;
@@ -13,8 +13,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.ResponseEntity;
-import unit.br.com.cesarcastro.apis.ccshortener.test.fixtures.ShortenedURLRequestDTOFixture;
-import unit.br.com.cesarcastro.apis.ccshortener.test.fixtures.ShortenedURLResponseDTOFixture;
+import br.com.cesarcastro.apis.ccshortener.test.fixtures.ShortenedURLRequestDTOFixture;
+import br.com.cesarcastro.apis.ccshortener.test.fixtures.ShortenedURLResponseDTOFixture;
 
 import java.io.IOException;
 

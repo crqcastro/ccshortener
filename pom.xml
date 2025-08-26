@@ -35,6 +35,7 @@
 
 		<!-- OPENAPI -->
 		<springdoc-openapi-ui.version>1.6.15</springdoc-openapi-ui.version>
+		<springdoc-openapi-starter-webmvc-ui.version>2.8.11</springdoc-openapi-starter-webmvc-ui.version>
 
 		<!-- MAPSTRUCT -->
 		<mapstruct.version>1.6.3</mapstruct.version>
@@ -48,8 +49,13 @@
 		<!-- CHECKSTYLE -->
 		<checkstyle-maven-plugin.version>3.2.0</checkstyle-maven-plugin.version>
 
+		<!-- TESTS -->
 		<archunit-junit5.version>1.4.1</archunit-junit5.version>
-		<springdoc-openapi-starter-webmvc-ui.version>2.8.11</springdoc-openapi-starter-webmvc-ui.version>
+		<maven.surefire.version>3.2.5</maven.surefire.version>
+		<maven.failsafe.version>3.2.5</maven.failsafe.version>
+		<build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
+
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -192,6 +198,73 @@
 						<goals>
 							<goal>check</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>${build-helper-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>add-test-source</id>
+						<phase>generate-test-sources</phase>
+						<goals><goal>add-test-source</goal></goals>
+						<configuration>
+							<sources>
+								<source>src/it/java</source>
+								<source>src/e2e/java</source>
+								<source>src/arch-test/java</source>
+							</sources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>add-test-resource</id>
+						<phase>generate-test-resources</phase>
+						<goals><goal>add-test-resource</goal></goals>
+						<configuration>
+							<resources>
+								<resource><directory>src/it/resources</directory></resource>
+								<resource><directory>src/e2e/resources</directory></resource>
+								<resource><directory>src/arch-test/resources</directory></resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.version}</version>
+				<executions>
+					<!-- Unit tests -->
+					<execution>
+						<id>unit-tests</id>
+						<phase>test</phase>
+						<goals><goal>test</goal></goals>
+						<configuration>
+							<includes>
+								<include>**/*Test.java</include>
+							</includes>
+							<excludes>
+								<exclude>**/*IT*.java</exclude>
+								<exclude>**/*E2E*.java</exclude>
+								<exclude>**/*ArchTest.java</exclude>
+								<exclude>**/*ArchitectureTest.java</exclude>
+							</excludes>
+						</configuration>
+					</execution>
+					<!-- Architecture (ArchUnit) -->
+					<execution>
+						<id>architecture-tests</id>
+						<phase>test</phase>
+						<goals><goal>test</goal></goals>
+						<configuration>
+							<includes>
+								<include>**/*ArchTest.java</include>
+								<include>**/*ArchitectureTest.java</include>
+							</includes>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
