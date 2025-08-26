@@ -25,9 +25,9 @@ spring:
   application:
     name: @project.name@
   datasource:
-    url: ${DATABASE-PGSQL-URL}
-    username: ${DATABASE-PGSQL-USERNAME}
-    password: ${DATABASE-PGSQL-PASSWORD}
+    url: ${DATABASE_PGSQL_URL}
+    username: ${DATABASE_PGSQL_USERNAME}
+    password: ${DATABASE_PGSQL_PASSWORD}
   hikari:
     minimumIdle: 1
     idleTimeout: 10000
@@ -38,7 +38,7 @@ spring:
     open-in-view: false
     properties:
       hibernate:
-        dialect: ${DATABASE-DIALECT}
+        dialect: ${DATABASE_DIALECT}
   flyway:
     url: ${FLYWAY_URL}
     user: ${FLYWAY_USERNAME}
