@@ -65,5 +65,11 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,metrics
+        include: health
       base-path: /actuator
+
+
+logging:
+  level:
+    org.springframework.web: ERROR
+    org.hibernate: ERROR

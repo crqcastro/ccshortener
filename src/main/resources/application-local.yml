@@ -1,0 +1,16 @@
+ccshortener:
+  code:
+    base-url: http://localhost:8080/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,beans,httptrace,loggers
+      base-path: /actuator
+
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.hibernate: DEBUG
