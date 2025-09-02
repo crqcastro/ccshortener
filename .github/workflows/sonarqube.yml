@@ -40,8 +40,9 @@ jobs:
       - name: Build, test & SonarQube
         run: |
           mvn -B -U clean verify sonar:sonar \
-            -Dsonar.host.url=https://sonarcloud.io\
-            -Dsonar.organization=crqcastro
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.organization=crqcastro \
+            -Dsonar.projectKey=crqcastro_ccshortener \
             -DskipTests=false \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
