@@ -68,6 +68,7 @@
 		<sonar.jacoco.reportPath>${jacoco.reportPath}</sonar.jacoco.reportPath>
 		<sonar.projectName>${project.name}</sonar.projectName>
 		<sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+		<sonar.host.url>https://sonarcloud.io/</sonar.host.url>
 		<sonar.coverage.exclusions>
 			**/domain/repository/**/*,
 			**/annotations/**/*,
