@@ -55,6 +55,46 @@
 		<maven.failsafe.version>3.2.5</maven.failsafe.version>
 		<build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
 
+		<!-- SONAR -->
+		<coverage.line>0</coverage.line>
+		<coverage.branch>0</coverage.branch>
+		<jacoco.reportPath>${project.basedir}/../target/jacoco.exec</jacoco.reportPath>
+		<jacoco.coverage.min>0.8</jacoco.coverage.min>
+		<sonar.coverage.jacoco.xmlReportPaths>
+			${project.basedir}/../target/jacoco.xml
+		</sonar.coverage.jacoco.xmlReportPaths>
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.jacoco.reportPath>${jacoco.reportPath}</sonar.jacoco.reportPath>
+		<sonar.projectName>${project.name}</sonar.projectName>
+		<sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+		<sonar.coverage.exclusions>
+			**/domain/repository/**/*,
+			**/annotations/**/*,
+			**/annotations/*,
+			**/config/**/*,
+			**/config/*,
+			**/domain/model/**/*,
+			**/mappers/**/*,
+			**/mappers/*,
+			**/domain/exceptions/**/*,
+			**/domain/exceptions/*,
+			**/CcshortenerApplication.java
+		</sonar.coverage.exclusions>
+		<sonar.exclusions>
+			**/domain/repository/**/*,
+			**/config/**/*,
+			**/config/*,
+			**/domain/model/**/*,
+			**/mappers/**/*,
+			**/mappers/*,
+			**/domain/exceptions/**/*,
+			**/domain/exceptions/*,
+			**/CcshortenerApplication.java
+		</sonar.exclusions>
+		<sonar-maven-plugin.version>3.9.1.2184</sonar-maven-plugin.version>
+		<sonar.scm.exclusions.disabled>false</sonar.scm.exclusions.disabled>
+		<jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
 
 	</properties>
 	<dependencies>
@@ -162,6 +202,39 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 	</dependencies>
+	<profiles>
+		<profile>
+			<id>coverage</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<version>0.8.7</version>
+						<executions>
+							<execution>
+								<id>prepare-agent</id>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>report</id>
+								<goals>
+									<goal>report</goal>
+								</goals>
+								<configuration>
+									<formats>
+										<format>XML</format>
+									</formats>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 	<build>
 		<plugins>
 			<plugin>
@@ -277,6 +350,77 @@
 								<include>**/*ArchTest.java</include>
 								<include>**/*ArchitectureTest.java</include>
 							</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- SONAR SCANNER -->
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>${sonar-maven-plugin.version}</version>
+			</plugin>
+			<!-- JACOCO REPORT -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>default-prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>default-report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<excludes>
+								<exclude>**/domain/repository/**/*</exclude>
+								<exclude>**/config/**/*</exclude>
+								<exclude>**/config/*</exclude>
+								<exclude>**/domain/model/**/*</exclude>
+								<exclude>**/mappers/**/*</exclude>
+								<exclude>**/mappers/*</exclude>
+								<exclude>**/domain/exceptions/**/*</exclude>
+								<exclude>**/domain/exceptions/*</exclude>
+								<exclude>**/CcshortenerApplication.java</exclude>
+							</excludes>
+						</configuration>
+					</execution>
+					<execution>
+						<id>default-check</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<excludes>
+								<exclude>**/domain/repository/**/*</exclude>
+								<exclude>**/config/**/*</exclude>
+								<exclude>**/config/*</exclude>
+								<exclude>**/domain/model/**/*</exclude>
+								<exclude>**/mappers/**/*</exclude>
+								<exclude>**/mappers/*</exclude>
+								<exclude>**/domain/exceptions/**/*</exclude>
+								<exclude>**/domain/exceptions/*</exclude>
+								<exclude>**/CcshortenerApplication.java</exclude>
+							</excludes>
+							<rules>
+								<rule>
+									<element>BUNDLE</element>
+									<limits>
+										<limit>
+											<counter>LINE</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>0.70</minimum>
+										</limit>
+									</limits>
+								</rule>
+							</rules>
 						</configuration>
 					</execution>
 				</executions>
