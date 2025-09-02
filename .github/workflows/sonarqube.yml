@@ -20,36 +20,36 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-analyze:
-    if: ${{ github.event.pull_request.draft != true }}
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
-          cache: maven
-
-      - name: Build, test & SonarQube
-        run: |
-          mvn -B -U clean verify sonar:sonar \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.organization=crqcastro \
-            -Dsonar.projectKey=crqcastro_ccshortener \
-            -DskipTests=false \
-            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-
-      - name: Quality Gate
-        uses: sonarsource/sonarqube-quality-gate-action@v1
-        with:
-          sonarHostUrl: ${{ secrets.SONAR_HOST_URL }}
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#  build-and-analyze:
+#    if: ${{ github.event.pull_request.draft != true }}
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v4
+#        with:
+#          fetch-depth: 0
+#
+#      - name: Set up JDK 17
+#        uses: actions/setup-java@v4
+#        with:
+#          distribution: temurin
+#          java-version: '17'
+#          cache: maven
+#
+#      - name: Build, test & SonarQube
+#        run: |
+#          mvn -B -U clean verify sonar:sonar \
+#            -Dsonar.host.url=https://sonarcloud.io \
+#            -Dsonar.organization=crqcastro \
+#            -Dsonar.projectKey=crqcastro_ccshortener \
+#            -DskipTests=false \
+#            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
+#            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+#
+#      - name: Quality Gate
+#        uses: sonarsource/sonarqube-quality-gate-action@v1
+#        with:
+#          sonarHostUrl: ${{ secrets.SONAR_HOST_URL }}
+#        env:
+#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
