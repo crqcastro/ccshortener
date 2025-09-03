@@ -239,10 +239,5 @@ Relatório em `target/site/jacoco/index.html`. A configuração típica no `pom`
 ```
 ---
 
-## Licença
-Defina a licença (ex.: MIT) no arquivo `LICENSE`.
-
----
-
 ### Autor
 Cesar Castro — contribuições são bem-vindas via PRs e Issues.
