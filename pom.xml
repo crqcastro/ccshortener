@@ -61,7 +61,7 @@
 		<jacoco.reportPath>${project.basedir}/../target/jacoco.exec</jacoco.reportPath>
 		<jacoco.coverage.min>0.8</jacoco.coverage.min>
 		<sonar.coverage.jacoco.xmlReportPaths>
-			${project.basedir}/../target/jacoco.xml
+			./target/site/jacoco-aggregate/jacoco.xml
 		</sonar.coverage.jacoco.xmlReportPaths>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
@@ -211,7 +211,7 @@
 					<plugin>
 						<groupId>org.jacoco</groupId>
 						<artifactId>jacoco-maven-plugin</artifactId>
-						<version>0.8.7</version>
+						<version>0.8.8</version>
 						<executions>
 							<execution>
 								<id>prepare-agent</id>
@@ -221,6 +221,7 @@
 							</execution>
 							<execution>
 								<id>report</id>
+								<phase>verify</phase>
 								<goals>
 									<goal>report</goal>
 								</goals>
@@ -368,6 +369,13 @@
 				<version>${jacoco-maven-plugin.version}</version>
 				<executions>
 					<execution>
+						<id>report-aggregate</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report-aggregate</goal>
+						</goals>
+					</execution>
+					<execution>
 						<id>default-prepare-agent</id>
 						<goals>
 							<goal>prepare-agent</goal>
@@ -417,7 +425,7 @@
 										<limit>
 											<counter>LINE</counter>
 											<value>COVEREDRATIO</value>
-											<minimum>0.70</minimum>
+											<minimum>0.80</minimum>
 										</limit>
 									</limits>
 								</rule>

@@ -40,7 +40,7 @@ spring:
       hibernate:
         dialect: ${DATABASE_DIALECT}
   flyway:
-    url: ${FLYWAY_URL}
+    url: ${DATABASE_PGSQL_URL}
     user: ${FLYWAY_USERNAME}
     password: ${FLYWAY_PASSWORD}
     schemas: ${FLYWAY_SCHEMAS}
