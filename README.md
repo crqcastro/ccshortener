@@ -23,7 +23,9 @@
   <img alt="FlyWay" src="https://img.shields.io/badge/flyway-8.2.1-CC0200?logo=flyway&logoColor=white&labelColor=20232a&style=for-the-badge" />
 </p>
 
-![tag](https://img.shields.io/github/v/tag/crqcastro/ccshortener?sort=semver&logo=git) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=crqcastro_ccshortener&metric=bugs)](https://sonarcloud.io/summary/new_code?id=crqcastro_ccshortener) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=crqcastro_ccshortener&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=crqcastro_ccshortener) [![build](https://img.shields.io/github/actions/workflow/status/crqcastro/ccshortener/ci.yml?branch=main&label=CI&logo=githubactions)](https://github.com/crqcastro/ccshortener/actions)
+![tag](https://img.shields.io/github/v/tag/crqcastro/ccshortener?sort=semver&logo=git) 
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=crqcastro_ccshortener&metric=bugs)](https://sonarcloud.io/summary/new_code?id=crqcastro_ccshortener) 
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=crqcastro_ccshortener&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=crqcastro_ccshortener)
 ![coverage](https://img.shields.io/badge/coverage-85%25-brightgreen)
 [![license](https://img.shields.io/github/license/crqcastro/ccshortener)](https://github.com/crqcastro/ccshortener/blob/main/LICENSE)
 
