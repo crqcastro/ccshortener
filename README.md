@@ -1,8 +1,11 @@
 # ccshortener — URL Shortening Service
 
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=crqcastro_ccshortener&metric=bugs)](https://sonarcloud.io/summary/new_code?id=crqcastro_ccshortener) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=crqcastro_ccshortener&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=crqcastro_ccshortener) <img src="https://img.shields.io/static/v1?label=java&message=framework&color=blue&style=for-the-badge&logo=JAVA"/>
+
+
 Encurtador de URLs em **Java 17+** com **Spring Boot 3**. Fornece API REST para encurtar links, redirecionar por código, definir expiração e contabilizar cliques.
 
-> **Stack:** Spring Boot · Spring Web · Spring Data JPA · PostgreSQL · Flyway · Lombok · Springdoc OpenAPI · JUnit/Jupiter · RestAssured · JaCoCo · Checkstyle · OWASP Dependency‑Check · SonarQube.
+> **Stack:** Spring Boot · Spring Web · Spring Data JPA · PostgreSQL · Flyway · Lombok · Springdoc OpenAPI · JUnit/Jupiter · RestAssured · JaCoCo · Checkstyle · SonarQube.
 
 ---
 
