@@ -27,7 +27,7 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=crqcastro_ccshortener&metric=bugs)](https://sonarcloud.io/summary/new_code?id=crqcastro_ccshortener) 
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=crqcastro_ccshortener&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=crqcastro_ccshortener)
 ![coverage](https://img.shields.io/badge/coverage-85%25-brightgreen)
-[![license](https://img.shields.io/github/license/crqcastro/ccshortener)](https://github.com/crqcastro/ccshortener/blob/main/LICENSE)
+[![license](https://img.shields.io/github/license/crqcastro/ccshortener)](https://github.com/crqcastro/ccshortener/blob/master/LICENSE)
 
 Encurtador de URLs em **Java 17+** com **Spring Boot 3**. Fornece API REST para encurtar links, redirecionar por código, definir expiração e contabilizar cliques.
 
